@@ -1,0 +1,131 @@
+2025-08-04 19:39:50,018 - __main__ - INFO - Initializing RAG system and medical knowledge base...
+2025-08-04 19:39:50,019 - __main__ - INFO - RAG system initialized successfully
+2025-08-04 19:39:50,020 - __main__ - INFO - Starting Patient Education Material Generator
+2025-08-04 19:39:50,036 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.120:5000
+2025-08-04 19:39:50,036 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-04 19:39:50,038 - werkzeug - INFO -  * Restarting with stat
+2025-08-04 19:40:07,845 - __main__ - INFO - Initializing RAG system and medical knowledge base...
+2025-08-04 19:40:07,846 - __main__ - INFO - RAG system initialized successfully
+2025-08-04 19:40:07,846 - __main__ - INFO - Starting Patient Education Material Generator
+2025-08-04 19:40:07,855 - werkzeug - WARNING -  * Debugger is active!
+2025-08-04 19:40:07,865 - werkzeug - INFO -  * Debugger PIN: 104-755-175
+2025-08-04 19:40:08,026 - __main__ - INFO - User accessed home page
+2025-08-04 19:40:08,191 - werkzeug - INFO - 127.0.0.1 - - [04/Aug/2025 19:40:08] "GET / HTTP/1.1" 200 -
+2025-08-04 19:40:08,436 - werkzeug - INFO - 127.0.0.1 - - [04/Aug/2025 19:40:08] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-08-04 19:40:08,497 - werkzeug - INFO - 127.0.0.1 - - [04/Aug/2025 19:40:08] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-08-04 19:40:08,984 - werkzeug - INFO - 127.0.0.1 - - [04/Aug/2025 19:40:08] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-08-04 19:41:18,962 - __main__ - INFO - File uploaded successfully: Sample-filled-in-MR.pdf
+2025-08-04 19:41:18,963 - __main__ - INFO - Education type selected: diet_plan
+2025-08-04 19:41:18,963 - __main__ - INFO - Processing PDF and extracting medical information...
+2025-08-04 19:41:18,964 - utils.pdf_processor - INFO - PDFProcessor initialized with chunk_size=500, overlap=50
+2025-08-04 19:41:18,964 - utils.pdf_processor - INFO - Processing PDF: uploads\Sample-filled-in-MR.pdf
+2025-08-04 19:41:18,965 - utils.pdf_processor - INFO - Loading PDF with LangChain: uploads\Sample-filled-in-MR.pdf
+2025-08-04 19:41:18,968 - utils.pdf_processor - ERROR - Error loading PDF with LangChain uploads\Sample-filled-in-MR.pdf: `pypdf` package not found, please install it with `pip install pypdf`
+2025-08-04 19:41:18,968 - utils.pdf_processor - WARNING - LangChain method failed, trying PyPDF2 fallback: Failed to load PDF with LangChain: `pypdf` package not found, please install it with `pip install pypdf`
+2025-08-04 19:41:18,968 - utils.pdf_processor - INFO - Extracting text from PDF: uploads\Sample-filled-in-MR.pdf
+2025-08-04 19:41:19,984 - utils.pdf_processor - INFO - Successfully extracted 14979 characters from 10 pages
+2025-08-04 19:41:19,987 - utils.pdf_processor - INFO - Fallback method: Split into 39 chunks
+2025-08-04 19:41:19,987 - utils.pdf_processor - INFO - Extracting medical information from documents
+2025-08-04 19:41:19,989 - utils.pdf_processor - INFO - Extracted medical info: 4 conditions, 2 medications, 4 procedures
+2025-08-04 19:41:19,990 - __main__ - INFO - Adding patient documents to RAG system...
+2025-08-04 19:41:19,990 - utils.rag_system - INFO - Adding 39 patient documents to vector store
+2025-08-04 19:41:21,021 - utils.rag_system - INFO - Ensemble retriever created successfully
+2025-08-04 19:41:21,021 - utils.rag_system - INFO - Patient documents added successfully
+2025-08-04 19:41:21,021 - __main__ - INFO - Retrieving relevant medical context...
+2025-08-04 19:41:21,021 - utils.rag_system - INFO - Retrieving documents for query: 'diagnosis condition hypertension disease test examination scan treatment treatment medication', type: diet_plan
+2025-08-04 19:41:21,194 - utils.rag_system - INFO - Retrieved 9 documents using ensemble retriever
+2025-08-04 19:41:21,194 - utils.rag_system - INFO - Final retrieval: 9 documents
+2025-08-04 19:41:21,194 - utils.rag_system - INFO - Generated context with 9 documents
+2025-08-04 19:41:21,195 - __main__ - INFO - Generating personalized education material...
+2025-08-04 19:41:21,195 - utils.gemini_generator - INFO - Generating diet_plan education material
+2025-08-04 19:41:21,197 - utils.gemini_generator - INFO - Calling Gemini API for content generation...
+2025-08-04 19:41:32,962 - utils.gemini_generator - INFO - Education material generated successfully
+2025-08-04 19:41:32,963 - __main__ - INFO - Education material generated successfully
+2025-08-04 19:41:32,964 - __main__ - INFO - Cleaned up uploaded file: Sample-filled-in-MR.pdf
+2025-08-04 19:41:32,969 - werkzeug - INFO - 127.0.0.1 - - [04/Aug/2025 19:41:32] "POST /upload HTTP/1.1" 200 -
+2025-08-04 19:41:34,504 - __main__ - INFO - Displaying education material results
+2025-08-04 19:41:34,635 - werkzeug - INFO - 127.0.0.1 - - [04/Aug/2025 19:41:34] "GET /results HTTP/1.1" 200 -
+2025-08-04 19:41:34,679 - werkzeug - INFO - 127.0.0.1 - - [04/Aug/2025 19:41:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-04 19:42:13,197 - __main__ - INFO - User accessed home page
+2025-08-04 19:42:13,268 - werkzeug - INFO - 127.0.0.1 - - [04/Aug/2025 19:42:13] "GET / HTTP/1.1" 200 -
+2025-08-04 19:42:13,401 - werkzeug - INFO - 127.0.0.1 - - [04/Aug/2025 19:42:13] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-04 19:42:13,444 - werkzeug - INFO - 127.0.0.1 - - [04/Aug/2025 19:42:13] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-08-04 19:43:15,582 - __main__ - INFO - File uploaded successfully: Sample-filled-in-MR.pdf
+2025-08-04 19:43:15,587 - __main__ - INFO - Education type selected: medication_guide
+2025-08-04 19:43:15,588 - __main__ - INFO - Processing PDF and extracting medical information...
+2025-08-04 19:43:15,594 - utils.pdf_processor - INFO - PDFProcessor initialized with chunk_size=500, overlap=50
+2025-08-04 19:43:15,596 - utils.pdf_processor - INFO - Processing PDF: uploads\Sample-filled-in-MR.pdf
+2025-08-04 19:43:15,596 - utils.pdf_processor - INFO - Loading PDF with LangChain: uploads\Sample-filled-in-MR.pdf
+2025-08-04 19:43:15,626 - utils.pdf_processor - ERROR - Error loading PDF with LangChain uploads\Sample-filled-in-MR.pdf: `pypdf` package not found, please install it with `pip install pypdf`
+2025-08-04 19:43:15,627 - utils.pdf_processor - WARNING - LangChain method failed, trying PyPDF2 fallback: Failed to load PDF with LangChain: `pypdf` package not found, please install it with `pip install pypdf`
+2025-08-04 19:43:15,628 - utils.pdf_processor - INFO - Extracting text from PDF: uploads\Sample-filled-in-MR.pdf
+2025-08-04 19:43:16,200 - utils.pdf_processor - INFO - Successfully extracted 14979 characters from 10 pages
+2025-08-04 19:43:16,211 - utils.pdf_processor - INFO - Fallback method: Split into 39 chunks
+2025-08-04 19:43:16,212 - utils.pdf_processor - INFO - Extracting medical information from documents
+2025-08-04 19:43:16,213 - utils.pdf_processor - INFO - Extracted medical info: 4 conditions, 2 medications, 4 procedures
+2025-08-04 19:43:16,214 - __main__ - INFO - Adding patient documents to RAG system...
+2025-08-04 19:43:16,217 - utils.rag_system - INFO - Adding 39 patient documents to vector store
+2025-08-04 19:43:18,366 - utils.rag_system - INFO - Ensemble retriever created successfully
+2025-08-04 19:43:18,366 - utils.rag_system - INFO - Patient documents added successfully
+2025-08-04 19:43:18,367 - __main__ - INFO - Retrieving relevant medical context...
+2025-08-04 19:43:18,369 - utils.rag_system - INFO - Retrieving documents for query: 'diagnosis condition hypertension disease test examination scan treatment treatment medication', type: medication_guide
+2025-08-04 19:43:18,502 - utils.rag_system - INFO - Retrieved 8 documents using ensemble retriever
+2025-08-04 19:43:18,503 - utils.rag_system - INFO - Final retrieval: 8 documents
+2025-08-04 19:43:18,504 - utils.rag_system - INFO - Generated context with 8 documents
+2025-08-04 19:43:18,504 - __main__ - INFO - Generating personalized education material...
+2025-08-04 19:43:18,509 - utils.gemini_generator - INFO - Generating medication_guide education material
+2025-08-04 19:43:18,521 - utils.gemini_generator - INFO - Calling Gemini API for content generation...
+2025-08-04 19:43:31,895 - utils.gemini_generator - INFO - Education material generated successfully
+2025-08-04 19:43:31,896 - __main__ - INFO - Education material generated successfully
+2025-08-04 19:43:31,897 - __main__ - INFO - Cleaned up uploaded file: Sample-filled-in-MR.pdf
+2025-08-04 19:43:31,905 - werkzeug - INFO - 127.0.0.1 - - [04/Aug/2025 19:43:31] "POST /upload HTTP/1.1" 200 -
+2025-08-04 19:43:33,785 - __main__ - INFO - Displaying education material results
+2025-08-04 19:43:33,788 - werkzeug - INFO - 127.0.0.1 - - [04/Aug/2025 19:43:33] "GET /results HTTP/1.1" 200 -
+2025-08-04 19:43:33,888 - werkzeug - INFO - 127.0.0.1 - - [04/Aug/2025 19:43:33] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-04 19:43:46,837 - werkzeug - INFO - 127.0.0.1 - - [04/Aug/2025 19:43:46] "GET /download HTTP/1.1" 200 -
+2025-08-04 19:43:51,070 - __main__ - INFO - User accessed home page
+2025-08-04 19:43:51,071 - werkzeug - INFO - 127.0.0.1 - - [04/Aug/2025 19:43:51] "GET / HTTP/1.1" 200 -
+2025-08-04 19:43:51,125 - werkzeug - INFO - 127.0.0.1 - - [04/Aug/2025 19:43:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-04 19:43:51,127 - werkzeug - INFO - 127.0.0.1 - - [04/Aug/2025 19:43:51] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-08-04 19:46:26,883 - __main__ - INFO - File uploaded successfully: Sample-filled-in-MR.pdf
+2025-08-04 19:46:26,888 - __main__ - INFO - Education type selected: diet_plan
+2025-08-04 19:46:26,889 - __main__ - INFO - Processing PDF and extracting medical information...
+2025-08-04 19:46:26,892 - utils.pdf_processor - INFO - PDFProcessor initialized with chunk_size=500, overlap=50
+2025-08-04 19:46:26,892 - utils.pdf_processor - INFO - Processing PDF: uploads\Sample-filled-in-MR.pdf
+2025-08-04 19:46:26,893 - utils.pdf_processor - INFO - Loading PDF with LangChain: uploads\Sample-filled-in-MR.pdf
+2025-08-04 19:46:26,913 - utils.pdf_processor - ERROR - Error loading PDF with LangChain uploads\Sample-filled-in-MR.pdf: `pypdf` package not found, please install it with `pip install pypdf`
+2025-08-04 19:46:26,913 - utils.pdf_processor - WARNING - LangChain method failed, trying PyPDF2 fallback: Failed to load PDF with LangChain: `pypdf` package not found, please install it with `pip install pypdf`
+2025-08-04 19:46:26,914 - utils.pdf_processor - INFO - Extracting text from PDF: uploads\Sample-filled-in-MR.pdf
+2025-08-04 19:46:27,385 - utils.pdf_processor - INFO - Successfully extracted 14979 characters from 10 pages
+2025-08-04 19:46:27,391 - utils.pdf_processor - INFO - Fallback method: Split into 39 chunks
+2025-08-04 19:46:27,392 - utils.pdf_processor - INFO - Extracting medical information from documents
+2025-08-04 19:46:27,393 - utils.pdf_processor - INFO - Extracted medical info: 4 conditions, 2 medications, 4 procedures
+2025-08-04 19:46:27,393 - __main__ - INFO - Adding patient documents to RAG system...
+2025-08-04 19:46:27,395 - utils.rag_system - INFO - Adding 39 patient documents to vector store
+2025-08-04 19:46:28,576 - utils.rag_system - INFO - Ensemble retriever created successfully
+2025-08-04 19:46:28,577 - utils.rag_system - INFO - Patient documents added successfully
+2025-08-04 19:46:28,577 - __main__ - INFO - Retrieving relevant medical context...
+2025-08-04 19:46:28,578 - utils.rag_system - INFO - Retrieving documents for query: 'diagnosis condition hypertension disease test examination scan treatment treatment medication', type: diet_plan
+2025-08-04 19:46:28,616 - utils.rag_system - INFO - Retrieved 9 documents using ensemble retriever
+2025-08-04 19:46:28,616 - utils.rag_system - INFO - Final retrieval: 9 documents
+2025-08-04 19:46:28,617 - utils.rag_system - INFO - Generated context with 9 documents
+2025-08-04 19:46:28,617 - __main__ - INFO - Generating personalized education material...
+2025-08-04 19:46:28,618 - utils.gemini_generator - INFO - Generating diet_plan education material
+2025-08-04 19:46:28,621 - utils.gemini_generator - INFO - Calling Gemini API for content generation...
+2025-08-04 19:46:38,695 - utils.gemini_generator - INFO - Education material generated successfully
+2025-08-04 19:46:38,696 - __main__ - INFO - Education material generated successfully
+2025-08-04 19:46:38,697 - __main__ - INFO - Cleaned up uploaded file: Sample-filled-in-MR.pdf
+2025-08-04 19:46:38,703 - werkzeug - INFO - 127.0.0.1 - - [04/Aug/2025 19:46:38] "POST /upload HTTP/1.1" 200 -
+2025-08-04 19:46:41,236 - __main__ - INFO - Displaying education material results
+2025-08-04 19:46:41,239 - werkzeug - INFO - 127.0.0.1 - - [04/Aug/2025 19:46:41] "GET /results HTTP/1.1" 200 -
+2025-08-04 19:46:41,296 - werkzeug - INFO - 127.0.0.1 - - [04/Aug/2025 19:46:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-04 19:49:06,776 - werkzeug - INFO -  * Detected change in 'C:\\Users\\sohai\\Downloads\\College_Project\\config.py', reloading
+2025-08-04 19:49:12,296 - werkzeug - INFO -  * Restarting with stat
+2025-08-04 19:49:28,527 - __main__ - INFO - Initializing RAG system and medical knowledge base...
+2025-08-04 19:49:28,528 - __main__ - INFO - RAG system initialized successfully
+2025-08-04 19:49:28,528 - __main__ - INFO - Starting Patient Education Material Generator
+2025-08-04 19:49:28,535 - werkzeug - WARNING -  * Debugger is active!
+2025-08-04 19:49:28,542 - werkzeug - INFO -  * Debugger PIN: 104-755-175

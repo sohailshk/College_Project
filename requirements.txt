@@ -1,0 +1,11 @@
+flask
+werkzeug
+requests
+PyPDF2
+faiss-cpu
+numpy
+sentence-transformers
+python-dotenv
+langchain
+langchain-google-genai
+langchain-community
