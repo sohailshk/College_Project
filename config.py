@@ -23,7 +23,7 @@ class Config:
     ALLOWED_EXTENSIONS = {'pdf'}
     
     # Gemini API Configuration
-    GEMINI_API_KEY = "AIzaSyDUId0BD0j_wIF0uhe3DQDRIkkSI0jsTnM"  # Your API key
+    GEMINI_API_KEY = ""  # Your API key
     GEMINI_MODEL = "gemini-2.0-flash"
     
     # Database Configuration
